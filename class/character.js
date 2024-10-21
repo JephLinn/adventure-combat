@@ -13,15 +13,45 @@ class Character {
   applyDamage(amount) {
     this.health -= amount
     
-    if (this.health === 0) {
+    if (this.health <= 0) {
       this.die();
     }
   }
+ 
+  takeItem(itemName) {
 
-  die() {
-    this.currentRoom = null;
-    this.items = [];
+    let item = this.currentRoom.getItemByName(itemName);
+        let i = this.currentRoom.items.indexOf(item);
+        this.items.push(item);
+        this.currentRoom.items.splice(i)
+
   }
+
+  dropItem(itemName) {
+
+    let item = this.getItemByName(itemName);
+        let i = this.items.indexOf(item);
+        this.items.splice(i);
+        this.currentRoom.items.push(item)
+
+  }
+
+  getItemByName(name) {
+
+    for (let item of this.items) {
+        if (item.name === name) {
+            return item
+        }
+    }
+}
+
+die() {
+  for (let item in this.items) {
+    this.dropItem(this.items[item].name);
+  }
+  this.currentRoom = null;
+
+}
 
 }
 

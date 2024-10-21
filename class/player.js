@@ -33,23 +33,23 @@ class Player extends Character {
     }
   }
 
-  takeItem(itemName) {
+//   takeItem(itemName) {
 
-    let item = this.currentRoom.getItemByName(itemName);
-        let i = this.currentRoom.items.indexOf(item);
-        this.items.push(item);
-        this.currentRoom.items.splice(i)
+//     let item = this.currentRoom.getItemByName(itemName);
+//         let i = this.currentRoom.items.indexOf(item);
+//         this.items.push(item);
+//         this.currentRoom.items.splice(i)
 
-  }
+//   }
 
-  dropItem(itemName) {
+//   dropItem(itemName) {
 
-    let item = this.getItemByName(itemName);
-        let i = this.items.indexOf(item);
-        this.items.splice(i);
-        this.currentRoom.items.push(item)
+//     let item = this.getItemByName(itemName);
+//         let i = this.items.indexOf(item);
+//         this.items.splice(i);
+//         this.currentRoom.items.push(item)
 
-  }
+//   }
 
   eatItem(itemName) {
 
@@ -62,14 +62,14 @@ class Player extends Character {
 
   }
 
-  getItemByName(name) {
+//   getItemByName(name) {
 
-    for (let item of this.items) {
-        if (item.name === name) {
-            return item
-        }
-    }
-}
+//     for (let item of this.items) {
+//         if (item.name === name) {
+//             return item
+//         }
+//     }
+// }
 
   hit(name) {
 
