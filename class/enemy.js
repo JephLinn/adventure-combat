@@ -57,6 +57,8 @@ class Enemy extends Character {
 
   applyDamage(amount) {
     this.health -= amount;
+
+    this.attackTarget = this.player;
   }
 
 

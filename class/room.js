@@ -61,8 +61,13 @@ class Room {
 }
 
   getEnemyByName(name) {
-
-    // Fill this in
+    let enemies = this.getEnemies();
+    for (let enemy of enemies) {
+        
+        if (enemy.name === name) {
+            return enemy;
+        }
+    }
   }
 }
 

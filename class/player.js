@@ -73,7 +73,13 @@ class Player extends Character {
 
   hit(name) {
 
-    // Fill this in
+    let enemy = this.currentRoom.getEnemyByName(name);
+
+    if (enemy) {
+      enemy.applyDamage(this.strength);
+
+      // enemy.setPlayer = this
+    }
 
   }
 
