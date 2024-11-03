@@ -3,7 +3,9 @@ const {Character} = require('./character');
 
 class Enemy extends Character {
   constructor(name, description, currentRoom) {
-    // Fill this in
+    super (name, description, currentRoom);
+    this.cooldown = 3000;
+    this.attackTarget = null;
   }
 
   setPlayer(player) {
@@ -12,11 +14,22 @@ class Enemy extends Character {
 
 
   randomMove() {
-    // Fill this in
+    let exits = this.currentRoom.getExits();
+    let randomExit = exits[Math.floor(Math.random() * exits.length)];
+    let nextRoom = this.currentRoom.getRoomInDirection(randomExit);
+    this.currentRoom = nextRoom;
+
+    this.cooldown += 1000;
+    this.act;
+    this.attackTarget = null;
   }
 
   takeSandwich() {
-    // Fill this in
+    let food = this.currentRoom.getItemByName(sandwich)
+
+    if (food) {
+      this.takeItem(food)
+    }
   }
 
   // Print the alert only if player is standing in the same room
@@ -36,11 +49,14 @@ class Enemy extends Character {
   }
 
   attack() {
-    // Fill this in
+    this.attackTarget = this.player;
+    this.attackTarget.applyDamage(this.strength);
+    this.cooldown += 3000;
+    this.act;
   }
 
   applyDamage(amount) {
-    // Fill this in
+    this.health -= amount;
   }
 
 
@@ -55,7 +71,7 @@ class Enemy extends Character {
       this.rest();
     }
 
-    // Fill this in
+    setTimeout(() => this.scratchNose, 3000);
   }
 
 
